@@ -10,6 +10,7 @@ open Types
 let pageParser: Parser<Page->Page,Page> =
   oneOf [
     map About (s "about")
+    map Scale (s "scale")
     map Home (s "home")
   ]
 
@@ -23,9 +24,11 @@ let urlUpdate (result: Option<Page>) model =
 
 let init result =
   let (home, homeCmd) = Home.State.init()
+  let (scale, scaleCmd) = Scale.State.init()
   let (model, cmd) =
     urlUpdate result
       { currentPage = Home
+        scale = scale
         home = home }
   model, Cmd.batch [ cmd
                      Cmd.map HomeMsg homeCmd ]
@@ -35,3 +38,6 @@ let update msg model =
   | HomeMsg msg ->
       let (home, homeCmd) = Home.State.update msg model.home
       { model with home = home }, Cmd.map HomeMsg homeCmd
+  | ScaleMsg msg ->
+      let (scale, scaleCmd) = Scale.State.update msg model.home
+      { model with scale = scale }, Cmd.map ScaleMsg scaleCmd

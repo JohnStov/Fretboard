@@ -8,9 +8,9 @@
     <!-- Info -->
     <Compile Include="Info/View.fs" />
     <!-- Counter -->
-    <Compile Include="Counter/Types.fs" />
-    <Compile Include="Counter/State.fs" />
-    <Compile Include="Counter/View.fs" />
+    <Compile Include="Scale/Types.fs" />
+    <Compile Include="Scale/State.fs" />
+    <Compile Include="Scale/View.fs" />
     <!-- Home -->
     <Compile Include="Home/Types.fs" />
     <Compile Include="Home/State.fs" />

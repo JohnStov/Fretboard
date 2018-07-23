@@ -30,6 +30,7 @@ let menu currentPage =
       ul
         [ ClassName "menu-list" ]
         [ menuItem "Home" Home currentPage
+          menuItem "Scale" Scale currentPage
           menuItem "About" Page.About currentPage ] ]
 
 let root model dispatch =
@@ -37,6 +38,7 @@ let root model dispatch =
   let pageHtml =
     function
     | Page.About -> Info.View.root
+    | Scale -> Scale.View.root model.scale (ScaleMsg >> dispatch)
     | Home -> Home.View.root model.home (HomeMsg >> dispatch)
 
   div
