@@ -11,4 +11,4 @@ let root =
         [ str "About page" ]
       p
         [ ]
-        [ str "This template is a simple application build with Fable + Elmish + React." ] ]
+        [ str "Fretboard Helper calculates scales and chords for fretted instruments" ] ]
