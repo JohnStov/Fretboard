@@ -7,7 +7,10 @@
     <Compile Include="Global.fs" />
     <!-- Info -->
     <Compile Include="Info/View.fs" />
-    <!-- Counter -->
+    <!-- Theory -->
+    <Compile Include="Theory/Scale.fs" />
+    <Compile Include="Theory/Tab.fs" />
+    <!-- Scale -->
     <Compile Include="Scale/Types.fs" />
     <Compile Include="Scale/State.fs" />
     <Compile Include="Scale/View.fs" />
