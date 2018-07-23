@@ -24,24 +24,29 @@ let noteName note =
     | Bflat -> "B♭"
     | B -> "B"
 
-let drawTab showFretNumbers nFrets tuning =
-    let tuningLine = 
-        ["   "] 
+let drawTab showFretNumbers nFrets tuning scale=
+    let stringNotes = tuning |> List.map (fun root -> notePositions (nFrets+1) root scale)
+    let isStringNote fret root =
+        let index = tuning |> List.findIndex (fun x -> x = root)
+        stringNotes.[index] |> List.contains fret
+
+    let tuningLine =
+        ["   "]
         @ (seq { for n in tuning -> sprintf "%-2s" (noteName n) } |> Seq.toList)
         |> String.concat ""
-    
+
     let nut =
         if showFretNumbers then
             [" 0┌"]
         else
             ["  ┌"]
-        @ [(seq { for _ in tuning -> "┬"} |> String.concat "─")]
+        @ [(seq { for root in tuning -> if root |> isStringNote 0 then "O" else "┬"} |> String.concat "─")]
         @ ["┐"]
         |> String.concat ""
 
-    let board = 
+    let board n =
         ["  │"]
-        @ [(seq { for _ in tuning -> "│"} |> String.concat " ")]
+        @ [(seq { for root in tuning -> if root |> isStringNote n then "O" else "│"} |> String.concat " ")]
         @ ["│"]
         |> String.concat ""
 
@@ -54,7 +59,7 @@ let drawTab showFretNumbers nFrets tuning =
         @ ["┤"]
         |> String.concat ""
 
-    let boards = seq { for _ in [1 .. nFrets] -> board}
+    let boards = seq { for i in [1 .. nFrets] -> board i}
     let frets = seq { for i in [1 .. nFrets] -> fret i}
     let fretboard = Seq.zip boards frets |> Seq.collect (fun (x, y) -> [x; y])
     seq {
