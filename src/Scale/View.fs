@@ -22,22 +22,22 @@ let root model dispatch =
                 [
                   p [ ClassName "form-control" ]
                     [ str "Tuning"
-                      select 
+                      select
                         [ ClassName "select"
                           OnChange (fun ev -> !!ev.target?value |> TuningName |> dispatch )]
                         [ for (name, _) in tunings -> option [] [ str name ] ] ]
                   p [ ClassName "form-control" ]
                     [ str "Scale"
-                      select 
+                      select
                         [ ClassName "select"
                           OnChange (fun ev -> !!ev.target?value |> RootName |> dispatch )]
                         [ for (name, _) in roots -> option [] [ str name ] ] ]
                   p [ ClassName "form-control" ]
                     [ str "Division"
-                      select 
+                      select
                         [ ClassName "select"
                           OnChange (fun ev -> !!ev.target?value |> ModifierName |> dispatch )]
                         [ for (name, _) in modifiers -> option [] [ str name ] ] ] ] ]
-          div [ ClassName "column fretboard" ] 
+          div [ ClassName "column fretboard" ]
             [ str frets ] ] ]
-                
+

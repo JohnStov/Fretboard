@@ -31,6 +31,10 @@ let roots = [
 let modifiers = [
   ("Major", major)
   ("Minor", minor)
+  ("Blues", blues)
+  ("Blues Minor", bluesMinor)
+  ("Pentatonic", pentatonic)
+  ("Pentatonic Minor", pentatonicMinor)
   ("Chromatic", (id)) ]
 
 let init () : Model * Cmd<Msg> =
@@ -39,14 +43,14 @@ let init () : Model * Cmd<Msg> =
 let update msg model : Model * Cmd<Msg> =
   match msg with
   | TuningName str ->
-      let tuning = 
+      let tuning =
         tunings |> List.find (fun (n, _) -> n = str) |> snd
       {model with tuning = tuning}, []
   | RootName str ->
-      let root = 
+      let root =
         roots |> List.find (fun (n, _) -> n = str) |> snd
       {model with root = root}, []
   | ModifierName str ->
-      let modifier = 
+      let modifier =
         modifiers |> List.find (fun (n, _) -> n = str) |> snd
       {model with modifier = modifier}, []
