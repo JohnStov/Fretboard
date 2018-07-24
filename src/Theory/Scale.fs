@@ -38,7 +38,7 @@ let chromatic length rootNote : Scale =
     |> List.skipWhile (fun n -> n <> rootNote)
     |> extendToLength
 
-let octave = chromatic 12
+let octave root = chromatic 12 root
 let cMaj = octave C |> major
 let cMin = octave C |> minor
 

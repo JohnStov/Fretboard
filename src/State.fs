@@ -39,5 +39,5 @@ let update msg model =
       let (home, homeCmd) = Home.State.update msg model.home
       { model with home = home }, Cmd.map HomeMsg homeCmd
   | ScaleMsg msg ->
-      let (scale, scaleCmd) = Scale.State.update msg model.home
+      let (scale, scaleCmd) = Scale.State.update msg model.scale
       { model with scale = scale }, Cmd.map ScaleMsg scaleCmd

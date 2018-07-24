@@ -1,6 +1,16 @@
 module Scale.Types
 
-type Model = string
+open Theory.Scale
+open Theory.Tab
+
+type Model = 
+  {
+    tuning : Tuning;     
+    root : Note;
+    modifier: Scale -> Scale
+  }
 
 type Msg =
-  | ChangeStr of string
+  | TuningName of string
+  | RootName of string
+  | ModifierName of string

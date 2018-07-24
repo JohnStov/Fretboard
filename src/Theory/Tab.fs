@@ -8,6 +8,7 @@ let openG : Tuning = [D; G; D; G; B; D]
 let openD : Tuning = [D; A; D; Fsharp; A; D]
 let dadgad : Tuning = [D; A; D; G; A; D]
 let ukulele : Tuning = [G; C; E; A]
+let mandolin : Tuning = [G; D; A; E]
 
 let noteName note =
     match note with
@@ -62,8 +63,9 @@ let drawTab showFretNumbers nFrets tuning scale=
     let boards = seq { for i in [1 .. nFrets] -> board i}
     let frets = seq { for i in [1 .. nFrets] -> fret i}
     let fretboard = Seq.zip boards frets |> Seq.collect (fun (x, y) -> [x; y])
-    seq {
+    let frets = seq {
         yield tuningLine
         yield nut
         yield! fretboard
     }
+    String.concat "\n\r" frets
