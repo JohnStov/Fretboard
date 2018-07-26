@@ -14,10 +14,10 @@
     <Compile Include="Scale/Types.fs" />
     <Compile Include="Scale/State.fs" />
     <Compile Include="Scale/View.fs" />
-    <!-- Home -->
-    <Compile Include="Home/Types.fs" />
-    <Compile Include="Home/State.fs" />
-    <Compile Include="Home/View.fs" />
+    <!-- Chord -->
+    <Compile Include="Chord/Types.fs" />
+    <Compile Include="Chord/State.fs" />
+    <Compile Include="Chord/View.fs" />
     <!-- Navbar -->
     <Compile Include="Navbar/View.fs" />
     <!-- App -->
