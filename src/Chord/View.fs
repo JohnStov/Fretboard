@@ -10,7 +10,7 @@ open Fable.Helpers.React
 open Fable.Helpers.React.Props
 
 let root model dispatch =
-  let frets = drawTab true 5 model.tuning (Theory.Scale.D |> octave |> major |> triad)
+  let frets = drawTab true 5 model.tuning (model.root |> octave |> model.chord)
 
   div [ ClassName "container" ]
     [
@@ -25,7 +25,19 @@ let root model dispatch =
                       select 
                         [ ClassName "select"
                           OnChange (fun ev -> !!ev.target?value |> TuningName |> dispatch )]
-                        [ for (name, _) in tunings -> option [] [ str name ] ] ] ] ]
+                        [ for (name, _) in tunings -> option [] [ str name ] ] ]
+                  p [ ClassName "form-control" ]
+                    [ str "Scale"
+                      select
+                        [ ClassName "select"
+                          OnChange (fun ev -> !!ev.target?value |> RootName |> dispatch )]
+                        [ for (name, _) in roots -> option [] [ str name ] ] ]
+                  p [ ClassName "form-control" ]
+                    [ str "Chord"
+                      select
+                        [ ClassName "select"
+                          OnChange (fun ev -> !!ev.target?value |> ChordName |> dispatch )]
+                        [ for (name, _) in chords -> option [] [ str name ] ] ] ] ]
           div [ ClassName "column fretboard" ] 
             [ str frets ] ] ]
                 
