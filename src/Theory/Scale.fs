@@ -22,7 +22,7 @@ let major (scale : Scale) =
     [ scale.[0]; scale.[2]; scale.[4]; scale.[5]; scale.[7]; scale.[9]; scale.[11] ]
 
 let minor (scale : Scale) =
-    [ scale.[0]; scale.[3]; scale.[5]; scale.[6]; scale.[7]; scale.[8]; scale.[10] ]
+    [ scale.[0]; scale.[2]; scale.[3]; scale.[5]; scale.[7]; scale.[8]; scale.[10] ]
 
 let pentatonic (scale : Scale) =
     [ scale.[0]; scale.[2]; scale.[4]; scale.[7]; scale.[9] ]
